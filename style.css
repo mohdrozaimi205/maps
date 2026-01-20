@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 16px;
   background-color: #0b1d3a;
   color: #ffffff;
   text-align: center;
@@ -25,21 +25,21 @@ h2 {
 
 .input-group input {
   flex: 1;
-  padding: 20px;
+  padding: 18px;
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 20px;
+  font-size: 18px;
   background: transparent;
   color: #fff;
 }
 
 .input-group button {
-  padding: 20px;
+  padding: 18px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -57,10 +57,10 @@ h2 {
 
 .btn-group button {
   width: 100%;
-  padding: 20px;
+  padding: 18px;
   border-radius: 20px;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -134,4 +134,16 @@ summary {
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
+}
+
+/* Responsive tweak untuk skrin besar */
+@media (min-width: 600px) {
+  .input-group,
+  .btn-group button,
+  .suggestions,
+  #route {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

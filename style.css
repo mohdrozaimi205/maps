@@ -1,15 +1,16 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 95%;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* ❗ elak scroll kiri-kanan */
   font-family: Arial, sans-serif;
   background-color: #0b1d3a;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
+  min-height: 100vh;
 }
 
 h2 {

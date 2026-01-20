@@ -1,9 +1,8 @@
-/* Global setup */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw;              /* penuh lebar skrin */
+  height: 100vh;             /* penuh tinggi skrin */
   font-family: Arial, sans-serif;
   background-color: #0b1d3a;
   color: #ffffff;
@@ -14,8 +13,8 @@ html, body {
 
 /* Heading */
 h2 {
-  font-size: clamp(28px, 4vw, 40px);
-  margin: clamp(20px, 4vh, 40px) 0 clamp(10px, 2vh, 20px);
+  font-size: clamp(32px, 5vw, 48px);   /* auto besar ikut skrin */
+  margin: 4vh 0 2vh;
   text-align: center;
 }
 
@@ -23,29 +22,28 @@ h2 {
 .input-group {
   display: flex;
   align-items: center;
-  width: 95%;
-  max-width: 1080px;
-  margin: clamp(10px, 2vh, 20px) auto;
+  width: 95vw;
+  margin: 2vh auto;
   background: #1c2f50;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 .input-group input {
   flex: 1;
-  padding: clamp(20px, 3vh, 28px);
+  padding: clamp(20px, 3vh, 32px);
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(24px, 4vw, 36px);
   background: transparent;
   color: #fff;
 }
 .input-group button {
-  padding: clamp(20px, 3vh, 28px);
+  padding: clamp(20px, 3vh, 32px);
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(24px, 4vw, 36px);
   cursor: pointer;
 }
 
@@ -53,17 +51,16 @@ h2 {
 .btn-group {
   display: flex;
   flex-direction: column;
-  gap: clamp(12px, 2vh, 20px);
-  width: 95%;
-  max-width: 1080px;
-  margin: clamp(20px, 4vh, 30px) auto;
+  gap: 2vh;
+  width: 95vw;
+  margin: 3vh auto;
 }
 .btn-group button {
   width: 100%;
-  padding: clamp(20px, 3vh, 28px);
+  padding: clamp(20px, 3vh, 32px);
   border-radius: 20px;
   border: none;
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(24px, 4vw, 36px);
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -71,14 +68,13 @@ h2 {
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-/* Suggestions dropdown */
+/* Suggestions */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
-  max-height: 300px;
+  max-height: 30vh;
   overflow-y: auto;
-  width: 95%;
-  max-width: 1080px;
+  width: 95vw;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
@@ -87,19 +83,18 @@ h2 {
   padding: clamp(16px, 2.5vh, 24px);
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: clamp(22px, 3vw, 28px);
+  font-size: clamp(22px, 3.5vw, 30px);
 }
 
-/* Result box */
+/* Route box */
 #route {
   flex: 1;
-  width: 100%;
-  max-width: 1080px;
+  width: 100vw;
   padding: clamp(24px, 4vh, 36px);
-  margin-top: clamp(20px, 3vh, 30px);
+  margin-top: 2vh;
   background: #1c2f50;
   overflow-y: auto;
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(26px, 4vw, 38px);
   text-align: center;
   line-height: 1.8;
 }
@@ -107,23 +102,23 @@ h2 {
 #route b {
   display: inline-block;
   margin-right: 8px;
-  font-size: clamp(26px, 3.5vw, 34px);
+  font-size: clamp(28px, 4.5vw, 40px);
 }
 
 .step {
-  margin: clamp(16px, 3vh, 24px) 0;
-  font-size: clamp(22px, 3vw, 28px);
-  padding: clamp(16px, 2.5vh, 24px);
+  margin: 2vh 0;
+  font-size: clamp(24px, 4vw, 34px);
+  padding: clamp(20px, 3vh, 28px);
   background: #2a3f66;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  width: 90%;
+  width: 90vw;
   text-align: center;
 }
 
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: clamp(24px, 3vw, 30px);
-  margin-top: clamp(16px, 2.5vh, 24px);
+  font-size: clamp(26px, 4vw, 36px);
+  margin-top: 2vh;
 }

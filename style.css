@@ -1,6 +1,6 @@
 html, body {
-  width: 1080px;             /* lock resolusi lebar */
-  height: 1920px;            /* lock resolusi tinggi */
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #0b1d3a;
@@ -11,8 +11,8 @@ html, body {
 }
 
 h2 {
-  margin: 40px 0 20px 0;     /* jarak dari atas */
-  font-size: 36px;
+  margin: 40px 0 20px 0;
+  font-size: 32px;
   text-align: center;
 }
 
@@ -20,7 +20,7 @@ h2 {
 .input-group {
   display: flex;
   align-items: center;
-  width: 95%;                /* hampir penuh skrin */
+  width: 95%;
   margin: 20px auto;
   background: #1c2f50;
   border-radius: 20px;
@@ -28,20 +28,20 @@ h2 {
 }
 .input-group input {
   flex: 1;
-  padding: 28px;
+  padding: 24px;
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 28px;
+  font-size: 26px;
   background: transparent;
   color: #fff;
 }
 .input-group button {
-  padding: 28px;
+  padding: 24px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
 }
 
@@ -55,10 +55,10 @@ h2 {
 }
 .btn-group button {
   width: 100%;
-  padding: 28px;
+  padding: 24px;
   border-radius: 20px;
   border: none;
-  font-size: 28px;
+  font-size: 26px;
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -81,26 +81,27 @@ h2 {
   padding: 20px;
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: 26px;
+  font-size: 24px;
 }
 
-/* Route box fit full frame */
+/* Route box */
 #route {
-  flex: 1;                   /* ambil baki ruang skrin */
+  flex: 1;
   width: 100%;
   padding: 30px;
-  margin-top: 20px;
+  margin-top: 30px;
   background: #1c2f50;
   border-radius: 0;
-  overflow-y: auto;           /* scroll kalau content panjang */
+  overflow-y: auto;
   font-size: 28px;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 #route b {
   display: inline-block;
   margin-right: 8px;
+  font-size: 30px;
 }
 
 .step {
@@ -119,4 +120,33 @@ summary {
   font-weight: bold;
   font-size: 28px;
   margin-top: 20px;
+}
+
+/* ✅ Responsive desktop version */
+@media (min-width: 1024px) {
+  html, body {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .input-group,
+  .btn-group,
+  .suggestions,
+  #route {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #route {
+    text-align: left;
+    font-size: 24px;
+  }
+
+  .step {
+    font-size: 22px;
+    text-align: left;
+  }
 }

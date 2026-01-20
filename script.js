@@ -97,12 +97,17 @@ async function getRoute() {
 
   const now = new Date();
   const eta = new Date(now.getTime() + route.duration * 1000);
+  const etaString = eta.toLocaleTimeString('ms-MY', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
 
   document.getElementById("route").innerHTML =
     `<div class="result-main">
        <div><b>Jarak:</b> ${distance}</div>
        <div><b>Masa:</b> ${durationText}</div>
-       <div><b>ETA:</b> ${eta.toLocaleTimeString()}</div>
+       <div><b>ETA:</b> ${etaString}</div>
        ${marhalahMsg ? `<div style="margin-top:2vh;color:#ffd700">${marhalahMsg}</div>` : ""}
      </div>`;
 }

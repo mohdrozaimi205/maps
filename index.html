@@ -2,39 +2,37 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Direction</title>
-  <!-- Link ke CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>Simple Direction</h2>
 
-  <!-- Tempat Asal -->
+  <!-- Input Asal -->
   <div class="input-group">
-    <input id="origin" placeholder="Taip tempat asal">
-    <button onclick="resetOrigin()">⟳</button>
+    <input id="origin" type="text" placeholder="Taip tempat asal">
+    <button onclick="resetOrigin()">↺</button>
   </div>
   <div id="suggestOrigin" class="suggestions"></div>
 
-  <!-- Tempat Destinasi -->
+  <!-- Input Destinasi -->
   <div class="input-group">
-    <input id="destination" placeholder="Taip tempat destinasi">
-    <button onclick="resetDestination()">⟳</button>
+    <input id="destination" type="text" placeholder="Taip tempat destinasi">
+    <button onclick="resetDestination()">↺</button>
   </div>
   <div id="suggestDestination" class="suggestions"></div>
 
-  <!-- Main buttons -->
+  <!-- Butang Utama -->
   <div class="btn-group">
     <button onclick="getRoute()">Kira</button>
-    <button onclick="reverseRoute()">
-      <span id="reverseIcon" class="reverse-icon">↔</span>
-    </button>
+    <button onclick="reverseRoute()">↔ Tukar Asal/Destinasi</button>
     <button onclick="resetForm()">Reset Semua</button>
   </div>
 
+  <!-- Result -->
   <div id="route"></div>
 
-  <!-- Link ke JS -->
   <script src="script.js"></script>
 </body>
 </html>

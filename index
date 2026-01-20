@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Direction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #0b1d3a; /* biru gelap */
+      color: #ffffff; /* tulisan putih */
+    }
+    h2 { text-align: center; }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input {
+      background: #1c2f50;
+      color: #fff;
+    }
+    button {
+      background: #007bff;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn-group button {
+      flex: 1;
+    }
+    .reverse-icon {
+      display: inline-block;
+      transition: transform 0.5s ease;
+    }
+    .rotate {
+      transform: rotate(180deg);
+    }
+    .suggestions {
+      background: #1c2f50;
+      border-radius: 5px;
+      max-height: 150px;
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease-in;
+      position: absolute;
+      width: 90%;
+      z-index: 1000;
+    }
+    .option {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #333;
+    }
+    .option:hover { background: #2a3f66; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #route {
+      margin-top: 20px;
+      padding: 15px;
+      background: #1c2f50;
+      border-radius: 5px;
+    }
+    .step {
+      margin: 10px 0;
+      font-size: 18px;
+      padding: 8px;
+      background: #2a3f66;
+      border-radius: 5px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Simple Direction</h2>
+  <div style="position:relative;">
+    <input id="origin" placeholder="Taip tempat asal">
+    <div id="suggestOrigin" class="suggestions"></div>
+  </div>
+  <div style="position:relative;">
+    <input id="destination" placeholder="Taip tempat destinasi">
+    <div id="suggestDestination" class="suggestions"></div>
+  </div>
+
+  <div class="btn-group">
+    <button onclick="getRoute()">Kira Laluan</button>
+    <button onclick="reverseRoute()">
+      <span id="reverseIcon" class="reverse-icon">↔</span> Reverse
+    </button>
+    <button onclick="resetForm()">⟳ Reset</button>
+  </div>
+
+  <div id="route"></div>
+
+<script>
+let coords = { origin: null, destination: null };
+let debounceTimer;
+
+document.getElementById("origin").addEventListener("input", () => debounceSearch("origin"));
+document.getElementById("destination").addEventListener("input", () => debounceSearch("destination"));
+
+function debounceSearch(type) {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => searchPlace(type), 300);
+}
+
+async function searchPlace(type) {
+  const query = document.getElementById(type).value;
+  if (query.length < 3) return;
+
+  const container = document.getElementById(type === 'origin' ? 'suggestOrigin' : 'suggestDestination');
+  container.innerHTML = "<div style='padding:10px'>Sedang cari...</div>";
+
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    container.innerHTML = "";
+    if (data.length === 0) {
+      container.innerHTML = "<div style='padding:10px'>Tiada hasil.</div>";
+      return;
+    }
+
+    data.forEach(place => {
+      const div = document.createElement("div");
+      div.className = "option";
+      div.textContent = place.display_name;
+      div.onclick = () => {
+        coords[type] = `${place.lon},${place.lat}`;
+        document.getElementById(type).value = place.display_name;
+        container.innerHTML = "";
+      };
+      container.appendChild(div);
+    });
+  } catch (err) {
+    container.innerHTML = "<div style='padding:10px'>Error cari tempat.</div>";
+  }
+}
+
+document.addEventListener("click", function(event) {
+  const originBox = document.getElementById("origin");
+  const destBox = document.getElementById("destination");
+  const originSuggest = document.getElementById("suggestOrigin");
+  const destSuggest = document.getElementById("suggestDestination");
+
+  if (!originBox.contains(event.target) && !originSuggest.contains(event.target)) {
+    originSuggest.innerHTML = "";
+  }
+  if (!destBox.contains(event.target) && !destSuggest.contains(event.target)) {
+    destSuggest.innerHTML = "";
+  }
+});
+
+async function getRoute() {
+  if (!coords.origin || !coords.destination) {
+    document.getElementById("route").innerHTML = "⚠ Sila pilih asal & destinasi dahulu.";
+    return;
+  }
+
+  const url = `https://router.project-osrm.org/route/v1/driving/${coords.origin};${coords.destination}?overview=false&steps=true`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (!data.routes || data.routes.length === 0) {
+    document.getElementById("route").innerHTML = "Tiada laluan ditemui.";
+    return;
+  }
+
+  const route = data.routes[0];
+  const distance = (route.distance / 1000).toFixed(2) + " km";
+  const duration = Math.round(route.duration / 60) + " minit";
+
+  const now = new Date();
+  const eta = new Date(now.getTime() + route.duration * 1000);
+
+  let steps = "";
+  route.legs[0].steps.forEach((s, i) => {
+    let arrow = "↑";
+    if (s.maneuver.modifier === "right") arrow = "→";
+    if (s.maneuver.modifier === "left") arrow = "←";
+    if (s.maneuver.modifier === "uturn") arrow = "↺";
+
+    let stepDist = s.distance < 1000 ? `${Math.round(s.distance)} m` : `${(s.distance/1000).toFixed(1)} km`;
+    let road = s.name && s.name !== "" ? ` di ${s.name}` : "";
+
+    steps += `<div class="step">Langkah ${i+1}: ${stepDist} ${arrow}${road}</div>`;
+  });
+
+  document.getElementById("route").innerHTML =
+    `<b>Jarak:</b> ${distance}<br>
+     <b>Masa:</b> ${duration}<br>
+     <b>ETA:</b> ${eta.toLocaleTimeString()}<br><br>
+     <details>
+       <summary><b>Arahan</b></summary>
+       ${steps}
+     </details>`;
+}
+
+// Reverse asal ↔ destinasi dengan animasi
+function reverseRoute() {
+  const originVal = document.getElementById("origin").value;
+  const destVal = document.getElementById("destination").value;
+  const originCoord = coords.origin;
+  const destCoord = coords.destination;
+
+  document.getElementById("origin").value = destVal;
+  document.getElementById("destination").value = originVal;
+  coords.origin = destCoord;
+  coords.destination = originCoord;
+
+  // animasi arrow
+  const icon = document.getElementById("reverseIcon");
+  icon.classList.add("rotate");
+  setTimeout(() => icon.classList.remove("rotate"), 500);
+}
+
+// Reset semua input & result
+function resetForm() {
+  document.getElementById("origin").value = "";
+  document.getElementById("destination").value = "";
+  document.getElementById("route").innerHTML = "";
+  coords.origin = null;
+  coords.destination = null;
+}
+</script>
+</body>
+</html>

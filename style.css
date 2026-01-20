@@ -2,54 +2,61 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #0b1d3a; /* tema biru gelap */
+  background-color: #0b1d3a;
   color: #ffffff;
   text-align: center;
 }
-h2 { margin-bottom: 20px; }
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
 
 /* Input group dengan reset button */
 .input-group {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;              /* penuh ikut skrin */
+  width: 100%;
   margin: 12px auto;
   background: #1c2f50;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
+
 .input-group input {
   flex: 1;
-  padding: 20px;            /* lebih besar untuk phone */
+  padding: 20px;
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 20px;          /* font besar */
+  font-size: 20px;
   background: transparent;
   color: #fff;
 }
+
 .input-group button {
   padding: 20px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 18px;
+  font-size: 22px;
   cursor: pointer;
 }
-.input-group button:hover { background: #cc0000; }
+
+.input-group button:hover {
+  background: #cc0000;
+}
 
 /* Main buttons */
 .btn-group {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 20px;
 }
+
 .btn-group button {
-  flex: 1;
-  width: 100%;              /* penuh ikut skrin */
+  width: 100%;
   padding: 20px;
   border-radius: 20px;
   border: none;
@@ -60,31 +67,42 @@ h2 { margin-bottom: 20px; }
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
-.btn-group button:hover { background: #0056b3; }
+
+.btn-group button:hover {
+  background: #0056b3;
+}
+
 .reverse-icon {
   display: inline-block;
   transition: transform 0.5s ease;
 }
-.rotate { transform: rotate(180deg); }
 
-/* Suggestions */
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* Suggestions dropdown */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
   max-height: 200px;
   overflow-y: auto;
-  width: 100%;              /* penuh ikut skrin */
+  width: 100%;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
 }
+
 .option {
   padding: 16px;
   cursor: pointer;
   border-bottom: 1px solid #333;
   font-size: 18px;
 }
-.option:hover { background: #2a3f66; }
+
+.option:hover {
+  background: #2a3f66;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
@@ -97,13 +115,12 @@ h2 { margin-bottom: 20px; }
   padding: 20px;
   background: #1c2f50;
   border-radius: 20px;
-  width: 100%;              /* penuh ikut skrin */
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
   text-align: left;
   font-size: 18px;
 }
+
 .step {
   margin: 12px 0;
   font-size: 18px;
@@ -112,6 +129,7 @@ h2 { margin-bottom: 20px; }
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+
 summary {
   cursor: pointer;
   font-weight: bold;

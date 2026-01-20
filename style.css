@@ -1,18 +1,21 @@
+/* Global setup */
 html, body {
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, sans-serif;
   background-color: #0b1d3a;
   color: #ffffff;
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Heading */
 h2 {
-  margin: 40px 0 20px 0;
-  font-size: 32px;
+  font-size: clamp(28px, 4vw, 40px);
+  margin: clamp(20px, 4vh, 40px) 0 clamp(10px, 2vh, 20px);
   text-align: center;
 }
 
@@ -21,27 +24,28 @@ h2 {
   display: flex;
   align-items: center;
   width: 95%;
-  margin: 20px auto;
+  max-width: 1080px;
+  margin: clamp(10px, 2vh, 20px) auto;
   background: #1c2f50;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 .input-group input {
   flex: 1;
-  padding: 24px;
+  padding: clamp(20px, 3vh, 28px);
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 26px;
+  font-size: clamp(22px, 3vw, 30px);
   background: transparent;
   color: #fff;
 }
 .input-group button {
-  padding: 24px;
+  padding: clamp(20px, 3vh, 28px);
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 26px;
+  font-size: clamp(22px, 3vw, 30px);
   cursor: pointer;
 }
 
@@ -49,16 +53,17 @@ h2 {
 .btn-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(12px, 2vh, 20px);
   width: 95%;
-  margin: 30px auto;
+  max-width: 1080px;
+  margin: clamp(20px, 4vh, 30px) auto;
 }
 .btn-group button {
   width: 100%;
-  padding: 24px;
+  padding: clamp(20px, 3vh, 28px);
   border-radius: 20px;
   border: none;
-  font-size: 26px;
+  font-size: clamp(22px, 3vw, 30px);
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -66,34 +71,35 @@ h2 {
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-/* Suggestions */
+/* Suggestions dropdown */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
   max-height: 300px;
   overflow-y: auto;
   width: 95%;
+  max-width: 1080px;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
 }
 .option {
-  padding: 20px;
+  padding: clamp(16px, 2.5vh, 24px);
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: 24px;
+  font-size: clamp(22px, 3vw, 28px);
 }
 
-/* Route box */
+/* Result box */
 #route {
   flex: 1;
   width: 100%;
-  padding: 30px;
-  margin-top: 30px;
+  max-width: 1080px;
+  padding: clamp(24px, 4vh, 36px);
+  margin-top: clamp(20px, 3vh, 30px);
   background: #1c2f50;
-  border-radius: 0;
   overflow-y: auto;
-  font-size: 28px;
+  font-size: clamp(24px, 3vw, 32px);
   text-align: center;
   line-height: 1.8;
 }
@@ -101,13 +107,13 @@ h2 {
 #route b {
   display: inline-block;
   margin-right: 8px;
-  font-size: 30px;
+  font-size: clamp(26px, 3.5vw, 34px);
 }
 
 .step {
-  margin: 20px 0;
-  font-size: 26px;
-  padding: 20px;
+  margin: clamp(16px, 3vh, 24px) 0;
+  font-size: clamp(22px, 3vw, 28px);
+  padding: clamp(16px, 2.5vh, 24px);
   background: #2a3f66;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -118,35 +124,6 @@ h2 {
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: 28px;
-  margin-top: 20px;
-}
-
-/* ✅ Responsive desktop version */
-@media (min-width: 1024px) {
-  html, body {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    align-items: center;
-  }
-
-  .input-group,
-  .btn-group,
-  .suggestions,
-  #route {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #route {
-    text-align: left;
-    font-size: 24px;
-  }
-
-  .step {
-    font-size: 22px;
-    text-align: left;
-  }
+  font-size: clamp(24px, 3vw, 30px);
+  margin-top: clamp(16px, 2.5vh, 24px);
 }

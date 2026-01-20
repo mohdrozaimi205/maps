@@ -1,7 +1,6 @@
 let coords = { origin: null, destination: null };
 let debounceTimer;
 
-// Debounce input
 document.getElementById("origin").addEventListener("input", () => debounceSearch("origin"));
 document.getElementById("destination").addEventListener("input", () => debounceSearch("destination"));
 
@@ -45,7 +44,6 @@ async function searchPlace(type) {
   }
 }
 
-// Auto-close suggestion bila klik luar
 document.addEventListener("click", function(event) {
   const originBox = document.getElementById("origin");
   const destBox = document.getElementById("destination");
@@ -78,7 +76,6 @@ async function getRoute() {
   const route = data.routes[0];
   const distance = (route.distance / 1000).toFixed(2) + " km";
 
-  // Kira masa: minit < 60 → kekalkan minit, kalau ≥ 60 → jam + minit
   const totalMinutes = Math.round(route.duration / 60);
   let durationText;
   if (totalMinutes < 60) {
@@ -86,40 +83,20 @@ async function getRoute() {
   } else {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    if (minutes === 0) {
-      durationText = `${hours} jam`;
-    } else {
-      durationText = `${hours} jam ${minutes} minit`;
-    }
+    durationText = minutes === 0 ? `${hours} jam` : `${hours} jam ${minutes} minit`;
   }
 
   const now = new Date();
   const eta = new Date(now.getTime() + route.duration * 1000);
 
-  let steps = "";
-  route.legs[0].steps.forEach((s, i) => {
-    let arrow = "↑";
-    if (s.maneuver.modifier === "right") arrow = "→";
-    if (s.maneuver.modifier === "left") arrow = "←";
-    if (s.maneuver.modifier === "uturn") arrow = "↺";
-
-    let stepDist = s.distance < 1000 ? `${Math.round(s.distance)} m` : `${(s.distance/1000).toFixed(1)} km`;
-    let road = s.name && s.name !== "" ? ` di ${s.name}` : "";
-
-    steps += `<div class="step">Langkah ${i+1}: ${stepDist} ${arrow}${road}</div>`;
-  });
-
   document.getElementById("route").innerHTML =
-    `<b>Jarak:</b> ${distance}<br>
-     <b>Masa:</b> ${durationText}<br>
-     <b>ETA:</b> ${eta.toLocaleTimeString()}<br><br>
-     <details>
-       <summary><b>Arahan</b></summary>
-       ${steps}
-     </details>`;
+    `<div class="result-main">
+       <div><b>Jarak:</b> ${distance}</div>
+       <div><b>Masa:</b> ${durationText}</div>
+       <div><b>ETA:</b> ${eta.toLocaleTimeString()}</div>
+     </div>`;
 }
 
-// Reverse asal ↔ destinasi dengan animasi
 function reverseRoute() {
   const originVal = document.getElementById("origin").value;
   const destVal = document.getElementById("destination").value;
@@ -136,7 +113,6 @@ function reverseRoute() {
   setTimeout(() => icon.classList.remove("rotate"), 500);
 }
 
-// Reset satu input
 function resetOrigin() {
   document.getElementById("origin").value = "";
   document.getElementById("suggestOrigin").innerHTML = "";
@@ -147,8 +123,6 @@ function resetDestination() {
   document.getElementById("suggestDestination").innerHTML = "";
   coords.destination = null;
 }
-
-// Reset semua
 function resetForm() {
   resetOrigin();
   resetDestination();

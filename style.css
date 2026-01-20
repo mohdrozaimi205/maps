@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #0b1d3a;
+  background-color: #0b1d3a; /* tema biru gelap */
   color: #ffffff;
   text-align: center;
 }
@@ -13,8 +13,7 @@ h2 { margin-bottom: 20px; }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  max-width: 360px;
+  width: 100%;              /* penuh ikut skrin */
   margin: 12px auto;
   background: #1c2f50;
   border-radius: 20px;
@@ -22,20 +21,20 @@ h2 { margin-bottom: 20px; }
 }
 .input-group input {
   flex: 1;
-  padding: 16px;
+  padding: 20px;            /* lebih besar untuk phone */
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 18px;
+  font-size: 20px;          /* font besar */
   background: transparent;
   color: #fff;
 }
 .input-group button {
-  padding: 16px;
+  padding: 20px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
 }
 .input-group button:hover { background: #cc0000; }
@@ -50,11 +49,11 @@ h2 { margin-bottom: 20px; }
 }
 .btn-group button {
   flex: 1;
-  max-width: 120px;
-  padding: 16px;
+  width: 100%;              /* penuh ikut skrin */
+  padding: 20px;
   border-radius: 20px;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -72,22 +71,18 @@ h2 { margin-bottom: 20px; }
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
-  max-height: 180px;
+  max-height: 200px;
   overflow-y: auto;
-  animation: fadeIn 0.3s ease-in;
-  width: 95%;
-  max-width: 360px;
+  width: 100%;              /* penuh ikut skrin */
   margin: 0 auto;
-  position: relative;
-  z-index: 1000;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
 }
 .option {
-  padding: 14px;
+  padding: 16px;
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: 16px;
+  font-size: 18px;
 }
 .option:hover { background: #2a3f66; }
 
@@ -99,20 +94,20 @@ h2 { margin-bottom: 20px; }
 /* Route box */
 #route {
   margin-top: 20px;
-  padding: 18px;
+  padding: 20px;
   background: #1c2f50;
   border-radius: 20px;
-  max-width: 380px;
+  width: 100%;              /* penuh ikut skrin */
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
   text-align: left;
-  font-size: 16px;
+  font-size: 18px;
 }
 .step {
   margin: 12px 0;
-  font-size: 17px;
-  padding: 12px;
+  font-size: 18px;
+  padding: 14px;
   background: #2a3f66;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -120,5 +115,5 @@ h2 { margin-bottom: 20px; }
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }

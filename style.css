@@ -1,5 +1,6 @@
 html, body {
-  height: 100%;
+  width: 1080px;             /* lock resolusi lebar */
+  height: 1920px;            /* lock resolusi tinggi */
   margin: 0;
   padding: 0;
   background-color: #0b1d3a;
@@ -10,8 +11,8 @@ html, body {
 }
 
 h2 {
-  margin: 20px 0;
-  font-size: 24px;
+  margin: 40px 0 20px 0;     /* jarak dari atas */
+  font-size: 36px;
   text-align: center;
 }
 
@@ -19,28 +20,28 @@ h2 {
 .input-group {
   display: flex;
   align-items: center;
-  width: 95%;
-  margin: 10px auto;
+  width: 95%;                /* hampir penuh skrin */
+  margin: 20px auto;
   background: #1c2f50;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 .input-group input {
   flex: 1;
-  padding: 20px;
+  padding: 28px;
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 20px;
+  font-size: 28px;
   background: transparent;
   color: #fff;
 }
 .input-group button {
-  padding: 20px;
+  padding: 28px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 20px;
+  font-size: 28px;
   cursor: pointer;
 }
 
@@ -48,16 +49,16 @@ h2 {
 .btn-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   width: 95%;
-  margin: 20px auto;
+  margin: 30px auto;
 }
 .btn-group button {
   width: 100%;
-  padding: 20px;
+  padding: 28px;
   border-radius: 20px;
   border: none;
-  font-size: 20px;
+  font-size: 28px;
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -69,7 +70,7 @@ h2 {
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
   width: 95%;
   margin: 0 auto;
@@ -77,39 +78,35 @@ h2 {
   text-align: left;
 }
 .option {
-  padding: 16px;
+  padding: 20px;
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: 20px;
+  font-size: 26px;
 }
 
-/* Route box fit full frame + spacing */
+/* Route box fit full frame */
 #route {
   flex: 1;                   /* ambil baki ruang skrin */
   width: 100%;
-  padding: 24px;             /* tambah padding */
-  margin-top: 12px;          /* jarak dari butang ke result */
+  padding: 30px;
+  margin-top: 20px;
   background: #1c2f50;
   border-radius: 0;
   overflow-y: auto;           /* scroll kalau content panjang */
-  font-size: 20px;
-  text-align: center;         /* isi teks center */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  line-height: 1.6;           /* selang baris lebih lega */
+  font-size: 28px;
+  text-align: center;
+  line-height: 1.6;
 }
 
 #route b {
   display: inline-block;
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .step {
-  margin: 14px 0;             /* jarak antara langkah */
-  font-size: 20px;
-  padding: 16px;
+  margin: 20px 0;
+  font-size: 26px;
+  padding: 20px;
   background: #2a3f66;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -120,6 +117,6 @@ h2 {
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 12px;           /* jarak sebelum Arahan */
+  font-size: 28px;
+  margin-top: 20px;
 }

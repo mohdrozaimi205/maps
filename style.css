@@ -1,14 +1,16 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;              /* biar page boleh scroll */
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #0b1d3a;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;          /* scroll seluruh page */
 }
 
 h2 {
@@ -20,7 +22,7 @@ h2 {
 .input-group {
   display: flex;
   align-items: center;
-  width: 95vw;
+  width: 95%;
   margin: 2vh auto;
   background: #1c2f50;
   border-radius: 20px;
@@ -49,7 +51,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 2vh;
-  width: 95vw;
+  width: 95%;
   margin: 3vh auto;
 }
 .btn-group button {
@@ -70,7 +72,7 @@ h2 {
   border-radius: 16px;
   max-height: none;
   overflow-y: visible;
-  width: 95vw;
+  width: 95%;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
@@ -84,10 +86,9 @@ h2 {
 
 /* Result box besar */
 #route {
-  flex: 1;
-  width: 100vw;
+  width: 95%;
+  margin: 3vh auto;
   padding: clamp(24px, 4vh, 36px);
-  margin-top: 2vh;
   background: #1c2f50;
   text-align: center;
 }

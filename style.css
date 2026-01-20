@@ -1,68 +1,124 @@
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #0b1d3a; /* biru gelap */
-    color: #ffffff;
-    text-align: center; /* semua content align tengah */
-  }
-  h2 { margin-bottom: 20px; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #0b1d3a;
+  color: #ffffff;
+  text-align: center;
+}
+h2 { margin-bottom: 20px; }
 
-  /* Input & button styling */
-  input, button {
-    width: 90%;              
-    max-width: 320px;        /* tak panjang sangat */
-    padding: 10px;
-    margin: 10px auto;       /* auto center */
-    display: block;          
-    border: none;
-    border-radius: 12px;     /* rounded lebih besar */
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4); /* shadow lembut */
-  }
-  input {
-    background: #1c2f50;
-    color: #fff;
-  }
-  button {
-    background: #007bff;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  button:hover { background: #0056b3; }
+/* Input group dengan reset button */
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  max-width: 360px;
+  margin: 12px auto;
+  background: #1c2f50;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+.input-group input {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  font-size: 18px;
+  background: transparent;
+  color: #fff;
+}
+.input-group button {
+  padding: 16px;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  background: #ff4444;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+.input-group button:hover { background: #cc0000; }
 
-  /* Suggestions dropdown */
-  .suggestions {
-    background: #1c2f50;
-    border-radius: 12px;
-    max-height: 150px;
-    overflow-y: auto;
-    animation: fadeIn 0.3s ease-in;
-    width: 90%;
-    max-width: 320px;
-    margin: 0 auto;          /* center */
-    position: relative;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    text-align: left;        /* isi suggestion align kiri */
-  }
-  .option {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #333;
-  }
-  .option:hover { background: #2a3f66; }
+/* Main buttons */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.btn-group button {
+  flex: 1;
+  max-width: 120px;
+  padding: 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  background: #007bff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+.btn-group button:hover { background: #0056b3; }
+.reverse-icon {
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+.rotate { transform: rotate(180deg); }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* Suggestions */
+.suggestions {
+  background: #1c2f50;
+  border-radius: 16px;
+  max-height: 180px;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-in;
+  width: 95%;
+  max-width: 360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  text-align: left;
+}
+.option {
+  padding: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  font-size: 16px;
+}
+.option:hover { background: #2a3f66; }
 
-  /* Route box */
-  #route {
-    margin-top: 20px;
-    padding: 15px;
-    background: #1c2f50;
-    border
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Route box */
+#route {
+  margin-top: 20px;
+  padding: 18px;
+  background: #1c2f50;
+  border-radius: 20px;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+  text-align: left;
+  font-size: 16px;
+}
+.step {
+  margin: 12px 0;
+  font-size: 17px;
+  padding: 12px;
+  background: #2a3f66;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+}

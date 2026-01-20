@@ -1,50 +1,53 @@
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;              /* penuh skrin */
   margin: 0;
-  padding: 0;                /* buang padding supaya penuh */
+  padding: 0;
   background-color: #0b1d3a;
   color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
 }
 
+/* Heading */
 h2 {
   margin: 20px 0;
-  font-size: 22px;
+  font-size: 24px;
 }
 
-/* Input group dengan reset button */
+/* Input group */
 .input-group {
   display: flex;
   align-items: center;
-  width: 100%;
-  margin: 12px auto;
+  width: 90%;                /* ikut lebar phone */
+  margin: 10px auto;
   background: #1c2f50;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
-
 .input-group input {
   flex: 1;
   padding: 20px;
   border: none;
   border-radius: 20px 0 0 20px;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
   background: transparent;
   color: #fff;
 }
-
 .input-group button {
   padding: 20px;
   border: none;
   border-radius: 0 20px 20px 0;
   background: #ff4444;
   color: #fff;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
   cursor: pointer;
-}
-
-.input-group button:hover {
-  background: #cc0000;
 }
 
 /* Main buttons */
@@ -52,16 +55,15 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 90%;
   margin: 20px auto;
-  width: 100%;
 }
-
 .btn-group button {
   width: 100%;
   padding: 20px;
   border-radius: 20px;
   border: none;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
   background: #007bff;
   color: #fff;
   font-weight: bold;
@@ -69,63 +71,39 @@ h2 {
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-.btn-group button:hover {
-  background: #0056b3;
-}
-
-.reverse-icon {
-  display: inline-block;
-  transition: transform 0.5s ease;
-}
-
-.rotate {
-  transform: rotate(180deg);
-}
-
-/* Suggestions dropdown */
+/* Suggestions */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
   max-height: 200px;
   overflow-y: auto;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   text-align: left;
 }
-
 .option {
   padding: 16px;
   cursor: pointer;
   border-bottom: 1px solid #333;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
 }
 
-.option:hover {
-  background: #2a3f66;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Route box */
+/* Route box fit full frame */
 #route {
-  margin-top: 20px;
+  flex: 1;                   /* ambil baki ruang skrin */
+  width: 100%;
   padding: 20px;
   background: #1c2f50;
-  border-radius: 0;          /* biar flat supaya fit screen */
-  width: 100%;
-  min-height: calc(100vh - 200px); /* penuh dari atas ke bawah kecuali header+butang */
-  box-shadow: none;
+  border-radius: 0;
+  overflow-y: auto;           /* scroll kalau content panjang */
+  font-size: 20px;
   text-align: left;
-  font-size: 20px;           /* seragam font */
 }
 
 .step {
   margin: 12px 0;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
   padding: 16px;
   background: #2a3f66;
   border-radius: 14px;
@@ -135,5 +113,5 @@ h2 {
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px;           /* seragam font */
+  font-size: 20px;
 }

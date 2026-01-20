@@ -1,18 +1,14 @@
-// Simpan koordinat asal & destinasi
 let coords = { origin: null, destination: null };
 let debounceTimer;
 
-// Event listener untuk input
 document.getElementById("origin").addEventListener("input", () => debounceSearch("origin"));
 document.getElementById("destination").addEventListener("input", () => debounceSearch("destination"));
 
-// Debounce supaya tak spam API
 function debounceSearch(type) {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => searchPlace(type), 300);
 }
 
-// Cari tempat dari Nominatim API
 async function searchPlace(type) {
   const query = document.getElementById(type).value;
   if (query.length < 3) return;
@@ -31,7 +27,6 @@ async function searchPlace(type) {
       return;
     }
 
-    // Senarai penuh tanpa scroll
     data.forEach(place => {
       const div = document.createElement("div");
       div.className = "option";
@@ -44,12 +39,11 @@ async function searchPlace(type) {
       container.appendChild(div);
     });
   } catch (err) {
-    container.innerHTML = "<div style='padding:10px;color:red'>Error: " + err + "</div>";
+    container.innerHTML = "<div style='padding:10px;color:red'>Ralat: " + err + "</div>";
     console.error(err);
   }
 }
 
-// Tutup dropdown bila klik luar
 document.addEventListener("click", function(event) {
   const originBox = document.getElementById("origin");
   const destBox = document.getElementById("destination");
@@ -64,7 +58,6 @@ document.addEventListener("click", function(event) {
   }
 });
 
-// Dapatkan route dari OSRM API
 async function getRoute() {
   if (!coords.origin || !coords.destination) {
     document.getElementById("route").innerHTML = "⚠ Sila pilih asal & destinasi dahulu.";
@@ -81,7 +74,16 @@ async function getRoute() {
   }
 
   const route = data.routes[0];
-  const distance = (route.distance / 1000).toFixed(2) + " km";
+  const distanceKm = (route.distance / 1000).toFixed(2);
+  const marhalah = (distanceKm / 81).toFixed(2);
+  const distance = `${distanceKm} km (${marhalah} marhalah)`;
+
+  let marhalahMsg = "";
+  if (distanceKm < 81) {
+    marhalahMsg = "Kurang 1 marhalah";
+  } else if (distanceKm >= 162) {
+    marhalahMsg = "Sesuai untuk buat solat jama'";
+  }
 
   const totalMinutes = Math.round(route.duration / 60);
   let durationText;
@@ -96,16 +98,15 @@ async function getRoute() {
   const now = new Date();
   const eta = new Date(now.getTime() + route.duration * 1000);
 
-  // Hanya result utama besar
   document.getElementById("route").innerHTML =
     `<div class="result-main">
        <div><b>Jarak:</b> ${distance}</div>
        <div><b>Masa:</b> ${durationText}</div>
        <div><b>ETA:</b> ${eta.toLocaleTimeString()}</div>
+       ${marhalahMsg ? `<div style="margin-top:2vh;color:#ffd700">${marhalahMsg}</div>` : ""}
      </div>`;
 }
 
-// Tukar asal ↔ destinasi
 function reverseRoute() {
   const originVal = document.getElementById("origin").value;
   const destVal = document.getElementById("destination").value;
@@ -118,17 +119,18 @@ function reverseRoute() {
   coords.destination = originCoord;
 }
 
-// Reset fungsi
 function resetOrigin() {
   document.getElementById("origin").value = "";
   document.getElementById("suggestOrigin").innerHTML = "";
   coords.origin = null;
 }
+
 function resetDestination() {
   document.getElementById("destination").value = "";
   document.getElementById("suggestDestination").innerHTML = "";
   coords.destination = null;
 }
+
 function resetForm() {
   resetOrigin();
   resetDestination();

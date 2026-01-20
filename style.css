@@ -1,0 +1,68 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #0b1d3a; /* biru gelap */
+    color: #ffffff;
+    text-align: center; /* semua content align tengah */
+  }
+  h2 { margin-bottom: 20px; }
+
+  /* Input & button styling */
+  input, button {
+    width: 90%;              
+    max-width: 320px;        /* tak panjang sangat */
+    padding: 10px;
+    margin: 10px auto;       /* auto center */
+    display: block;          
+    border: none;
+    border-radius: 12px;     /* rounded lebih besar */
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4); /* shadow lembut */
+  }
+  input {
+    background: #1c2f50;
+    color: #fff;
+  }
+  button {
+    background: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover { background: #0056b3; }
+
+  /* Suggestions dropdown */
+  .suggestions {
+    background: #1c2f50;
+    border-radius: 12px;
+    max-height: 150px;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-in;
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;          /* center */
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    text-align: left;        /* isi suggestion align kiri */
+  }
+  .option {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+  }
+  .option:hover { background: #2a3f66; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Route box */
+  #route {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1c2f50;
+    border

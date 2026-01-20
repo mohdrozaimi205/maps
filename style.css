@@ -9,7 +9,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* scroll seluruh page */
+  overflow-y: auto;
 }
 
 h2 {
@@ -66,7 +66,6 @@ h2 {
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-/* Dropdown penuh */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
@@ -84,7 +83,6 @@ h2 {
   font-size: clamp(22px, 3.5vw, 30px);
 }
 
-/* Result besar */
 #route {
   width: 95%;
   margin: 3vh auto;

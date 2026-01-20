@@ -118,13 +118,14 @@ h2 {
   width: 100%;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
   text-align: left;
-  font-size: 18px;
+  font-size: 20px;       /* sama dengan input */
+  font-family: Arial, sans-serif; /* sama dengan search */
 }
 
 .step {
   margin: 12px 0;
-  font-size: 18px;
-  padding: 14px;
+  font-size: 20px;       /* sama dengan input */
+  padding: 16px;
   background: #2a3f66;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -133,17 +134,5 @@ h2 {
 summary {
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px;
-}
-
-/* Responsive tweak untuk skrin besar */
-@media (min-width: 600px) {
-  .input-group,
-  .btn-group button,
-  .suggestions,
-  #route {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  font-size: 20px;       /* sama dengan input */
 }

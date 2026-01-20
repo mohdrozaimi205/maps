@@ -1,8 +1,9 @@
+/* Global setup */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;              /* penuh lebar skrin */
-  height: 100vh;             /* penuh tinggi skrin */
+  width: 100vw;
+  height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #0b1d3a;
   color: #ffffff;
@@ -13,7 +14,7 @@ html, body {
 
 /* Heading */
 h2 {
-  font-size: clamp(32px, 5vw, 48px);   /* auto besar ikut skrin */
+  font-size: clamp(32px, 5vw, 48px);
   margin: 4vh 0 2vh;
   text-align: center;
 }
@@ -68,12 +69,12 @@ h2 {
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
 }
 
-/* Suggestions */
+/* ✅ Suggestions dropdown penuh */
 .suggestions {
   background: #1c2f50;
   border-radius: 16px;
-  max-height: 30vh;
-  overflow-y: auto;
+  max-height: none;        /* buang limit tinggi */
+  overflow-y: visible;     /* biar keluar penuh */
   width: 95vw;
   margin: 0 auto;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
